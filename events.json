@@ -1,0 +1,106 @@
+[
+    {
+        "id": 1,
+        "title": "Web Development Workshop",
+        "date": "20-09-2026",
+        "category": "Workshop"
+    },
+
+    {
+        "id": 2,
+        "title": "Java Programming Seminar",
+        "date": "22-09-2026",
+        "category": "Seminar"
+    },
+    
+    {
+        "id": 3,
+        "title": "Coding Competition",
+        "date": "25-09-2026",
+        "category": "Competition"
+    },
+
+    {
+        "id": 4,
+        "title": "Data Science Workshop",
+        "date": "27-09-2026",
+        "category": "Workshop"
+    },
+
+    {
+        "id": 5,
+        "title": "Cyber Security Seminar",
+        "date": "01-10-2026",
+        "category": "Seminar"
+    },
+
+    {
+        "id": 6,
+        "title": "Python Coding Contest",
+        "date": "05-10-2026",
+        "category": "Competition"
+    },
+
+    {
+        "id": 7,
+        "title": "Database Management Workshop",
+        "date": "08-10-2026",
+        "category": "Workshop"
+    },
+
+    {
+        "id": 8,
+        "title": "Cloud Computing Seminar",
+        "date": "10-10-2026",
+        "category": "Seminar"
+    },
+
+    {
+        "id": 9,
+        "title": "Hackathon 2026",
+        "date": "15-10-2026",
+        "category": "Competition"
+    },
+
+    {
+        "id": 10,
+        "title": "Machine Learning Workshop",
+        "date": "18-10-2026",
+        "category": "Workshop"
+    },
+
+    {
+        "id": 11,
+        "title": "Artificial Intelligence Seminar",
+        "date": "20-10-2026",
+        "category": "Seminar"
+    },
+
+    {
+        "id": 12,
+        "title": "UI Design Competition",
+        "date": "23-10-2026",
+        "category": "Competition"
+    },
+
+    {
+        "id": 13,
+        "title": "Networking Workshop",
+        "date": "26-10-2026",
+        "category": "Workshop"
+    },
+
+    {
+        "id": 14,
+        "title": "Software Engineering Seminar",
+        "date": "28-10-2026",
+        "category": "Seminar"
+    },
+
+    {
+        "id": 15,
+        "title": "Project Exhibition",
+        "date": "01-11-2026",
+        "category": "Competition"
+    }
+]
