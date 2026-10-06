@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!--============== HEADER ==============-->
+
+<header class="header">
+
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h2>Student Hub</h2>
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">Dashboard</a>
+        <a href="courses.html">Courses</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="timetable.html">Timetable</a>
+        <a href="notices.html">Notices</a>
+        <a href="profile.html">Profile</a>
+        <a href="settings.html" class="active">Settings</a>
+
+    </nav>
+
+    <div class="header-icons">
+        <i class="fa-regular fa-bell"></i>
+        <i class="fa-regular fa-user"></i>
+    </div>
+
+</header>
+
+<!--============== PAGE TITLE ==============-->
+
+<section class="page-title">
+
+    <h1>Settings</h1>
+
+    <p>Manage your Student Hub account preferences.</p>
+
+</section>
+
+<!--============== SETTINGS ==============-->
+
+<section class="settings-container">
+
+    <!-- Profile Settings -->
+
+    <div class="setting-card">
+
+        <h2><i class="fa-solid fa-user"></i> Profile Settings</h2>
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter Full Name">
+
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter Email">
+
+        <label>Phone Number</label>
+        <input type="text" placeholder="Enter Phone Number">
+
+        <button>Update Profile</button>
+
+    </div>
+
+    <!-- Password -->
+
+    <div class="setting-card">
+
+        <h2><i class="fa-solid fa-lock"></i> Change Password</h2>
+
+        <label>Current Password</label>
+        <input type="password">
+
+        <label>New Password</label>
+        <input type="password">
+
+        <label>Confirm Password</label>
+        <input type="password">
+
+        <button>Change Password</button>
+
+    </div>
+
+    <!-- Notifications -->
+
+    <div class="setting-card">
+
+        <h2><i class="fa-solid fa-bell"></i> Notifications</h2>
+
+        <label>
+            <input type="checkbox" checked>
+            Email Notifications
+        </label>
+
+        <br><br>
+
+        <label>
+            <input type="checkbox" checked>
+            Assignment Reminders
+        </label>
+
+        <br><br>
+
+        <label>
+            <input type="checkbox">
+            Event Notifications
+        </label>
+
+        <br><br>
+
+        <button>Save Preferences</button>
+
+    </div>
+
+    <!-- Appearance -->
+
+    <div class="setting-card">
+
+        <h2><i class="fa-solid fa-palette"></i> Appearance</h2>
+
+        <label>
+
+            <input type="radio" name="theme" checked>
+
+            Light Theme
+
+        </label>
+
+        <br><br>
+
+        <label>
+
+            <input type="radio" name="theme">
+
+            Dark Theme
+
+        </label>
+
+        <br><br>
+
+        <button>Apply Theme</button>
+
+    </div>
+
+    <!-- Privacy -->
+
+    <div class="setting-card">
+
+        <h2><i class="fa-solid fa-shield-halved"></i> Privacy</h2>
+
+        <label>
+
+            <input type="checkbox" checked>
+
+            Show Profile to Faculty
+
+        </label>
+
+        <br><br>
+
+        <label>
+
+            <input type="checkbox">
+
+            Show Contact Information
+
+        </label>
+
+        <br><br>
+
+        <button>Save Privacy</button>
+
+    </div>
+
+    <!-- Account -->
+
+    <div class="setting-card">
+
+        <h2><i class="fa-solid fa-right-from-bracket"></i> Account</h2>
+
+        <button>Logout</button>
+
+        <br><br>
+
+        <button>Delete Account</button>
+
+    </div>
+
+</section>
+
+<!--============== FOOTER ==============-->
+
+<footer>
+
+<p>© 2026 Student Hub | All Rights Reserved.</p>
+
+</footer>
+<script src="../js/javascript.js"></script>
+</body>
+</html>
