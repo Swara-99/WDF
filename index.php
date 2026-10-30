@@ -1,43 +1,11 @@
 <?php
-require_once __DIR__ . '/includes/bootstrap.php';
-$pageTitle = 'StudentHub | Your campus, connected';
-include __DIR__ . '/includes/header.php';
+require_once __DIR__.'/../includes/bootstrap.php';require_admin();$pageTitle='Admin dashboard | StudentHub';
+$stats=['users'=>0,'students'=>0,'events'=>0,'registrations'=>0];$latest=[];$logs=[];
+if($pdo){$stats['users']=(int)$pdo->query('SELECT COUNT(*) FROM users')->fetchColumn();$stats['students']=(int)$pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")->fetchColumn();$stats['events']=(int)$pdo->query('SELECT COUNT(*) FROM events')->fetchColumn();$stats['registrations']=(int)$pdo->query('SELECT COUNT(*) FROM registrations')->fetchColumn();$latest=$pdo->query('SELECT name,email,created_at FROM users ORDER BY created_at DESC LIMIT 5')->fetchAll();$logs=$pdo->query('SELECT action,detail,created_at FROM audit_logs ORDER BY id DESC LIMIT 8')->fetchAll();}
+include __DIR__.'/../includes/header.php';
 ?>
-<main id="main-content">
-  <section class="hero">
-    <div class="hero-text">
-      <p class="eyebrow">YOUR CAMPUS, CONNECTED</p>
-      <h1>Everything you need for <span class="blue">student life.</span></h1>
-      <p>Keep track of campus events, notices, learning resources and your student profile in one friendly portal.</p>
-      <a class="btn" href="register.php">Get started</a>
-      <a class="btn btn-outline" href="events.php">Explore events</a>
-    </div>
-    <div class="hero-image">
-      <div class="hero-illustration" aria-label="Illustration of books and a graduation cap" role="img">
-        <span class="cap">🎓</span><span class="book">📘</span><span class="book">📗</span>
-        <p>Learn · Connect · Grow</p>
-      </div>
-    </div>
-  </section>
-  <section class="quick-access">
-    <h2>Quick access</h2>
-    <p class="section-lead">Your most-used student services, one click away.</p>
-    <div class="card-container">
-      <a class="card" href="dashboard.php"><span class="card-icon">▦</span><h3>Dashboard</h3><p>Your student overview</p></a>
-      <a class="card" href="events.php"><span class="card-icon">📅</span><h3>Campus events</h3><p>Discover what's happening</p></a>
-      <a class="card" href="notices.php"><span class="card-icon">🔔</span><h3>Notices</h3><p>Important campus updates</p></a>
-      <a class="card" href="faq.php"><span class="card-icon">❔</span><h3>Help & FAQ</h3><p>Answers to common questions</p></a>
-    </div>
-  </section>
-  <section class="events home-events">
-    <div class="heading"><div><h2>Upcoming events</h2><p class="section-lead">Find your next campus experience.</p></div><a href="events.php">View all →</a></div>
-    <div id="homeEvents" class="event-grid"><p>Loading events…</p></div>
-  </section>
-  <section class="callout"><div><h2>Make campus life simpler.</h2>
-  <p>Sign in to manage your profile and explore the student dashboard.</p>
-</div>
-<a class="btn" href="<?= is_logged_in() ? 'dashboard.php' : 'login.php' ?>"><?= is_logged_in() ? 'Open dashboard' : 'Sign in' ?>
-</a></section>
-</main>
-<script src="assets/js/app.js" defer></script>
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<main id="main-content" class="dashboard-container"><aside class="sidebar"><h3>Admin menu</h3><ul><li><a class="active" href="index.php">Overview</a></li><li><a href="students.php">Manage students</a></li><li><a href="events.php">Manage events</a></li><li><a href="api-events.php">AJAX events</a></li><li><a href="../dashboard.php">Student view</a></li></ul></aside><section class="dashboard-content"><h1>Admin dashboard</h1><p class="muted">System overview and latest activity.</p>
+<div class="dashboard-cards"><?php foreach(['users'=>'Total users','students'=>'Students','events'=>'Events','registrations'=>'Registrations'] as $k=>$label):?><article class="dashboard-card"><p><?=e($label)?></p><div class="stat"><?=$stats[$k]?></div></article><?php endforeach;?></div>
+<section class="dashboard-section"><h2>Latest registrations</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Created</th></tr></thead><tbody><?php foreach($latest as $r):?><tr><td><?=e($r['name'])?></td><td><?=e($r['email'])?></td><td><?=e($r['created_at'])?></td></tr><?php endforeach;?><?php if(!$latest):?><tr><td colspan="3">No users yet.</td></tr><?php endif;?></tbody></table></div></section>
+<section class="dashboard-section"><h2>Audit log</h2><div class="table-wrap"><table><thead><tr><th>Action</th><th>Detail</th><th>Time</th></tr></thead><tbody><?php foreach($logs as $r):?><tr><td><?=e($r['action'])?></td><td><?=e($r['detail'])?></td><td><?=e($r['created_at'])?></td></tr><?php endforeach;?><?php if(!$logs):?><tr><td colspan="3">No activity recorded.</td></tr><?php endif;?></tbody></table></div></section>
+</section></main><?php include __DIR__.'/../includes/footer.php';?>
