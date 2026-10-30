@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Campus Tech Meetup",
+    "date": "2026-11-05",
+    "category": "Technology",
+    "location": "Innovation Lab",
+    "description": "Meet fellow builders and share ideas about emerging technology."
+  },
+  {
+    "id": 2,
+    "title": "Design Thinking Workshop",
+    "date": "2026-11-12",
+    "category": "Workshop",
+    "location": "Seminar Hall A",
+    "description": "Practice turning student problems into practical solutions."
+  },
+  {
+    "id": 3,
+    "title": "Cultural Evening",
+    "date": "2026-11-20",
+    "category": "Cultural",
+    "location": "Open Air Theatre",
+    "description": "Celebrate creativity, music and campus community."
+  },
+  {
+    "id": 4,
+    "title": "Career Readiness Session",
+    "date": "2026-11-25",
+    "category": "Career",
+    "location": "Auditorium",
+    "description": "Prepare your resume and learn interview fundamentals."
+  },
+  {
+    "id": 5,
+    "title": "Coding Sprint",
+    "date": "2026-12-02",
+    "category": "Technology",
+    "location": "Computer Lab 2",
+    "description": "Work in teams on a short coding challenge."
+  },
+  {
+    "id": 6,
+    "title": "Sports Day",
+    "date": "2026-12-10",
+    "category": "Sports",
+    "location": "Sports Ground",
+    "description": "Take part in friendly campus sports activities."
+  },
+  {
+    "id": 7,
+    "title": "Photography Walk",
+    "date": "2026-12-15",
+    "category": "Cultural",
+    "location": "Campus Gardens",
+    "description": "Explore visual storytelling around campus."
+  },
+  {
+    "id": 8,
+    "title": "Open Source Hour",
+    "date": "2026-12-18",
+    "category": "Technology",
+    "location": "Library Lab",
+    "description": "Learn how to contribute to collaborative projects."
+  },
+  {
+    "id": 9,
+    "title": "Wellness Awareness",
+    "date": "2027-01-08",
+    "category": "Workshop",
+    "location": "Seminar Hall B",
+    "description": "A student-focused session on healthy routines."
+  },
+  {
+    "id": 10,
+    "title": "Project Showcase",
+    "date": "2027-01-15",
+    "category": "Academic",
+    "location": "Main Hall",
+    "description": "Present your semester projects and get feedback."
+  },
+  {
+    "id": 11,
+    "title": "Alumni Connect",
+    "date": "2027-01-22",
+    "category": "Career",
+    "location": "Conference Room",
+    "description": "Hear career stories from recent graduates."
+  },
+  {
+    "id": 12,
+    "title": "Book Exchange",
+    "date": "2027-01-28",
+    "category": "Academic",
+    "location": "Central Library",
+    "description": "Share books and find your next read."
+  },
+  {
+    "id": 13,
+    "title": "Robotics Demo",
+    "date": "2027-02-03",
+    "category": "Technology",
+    "location": "Innovation Lab",
+    "description": "Explore student-built robotics projects."
+  },
+  {
+    "id": 14,
+    "title": "Debate Forum",
+    "date": "2027-02-12",
+    "category": "Cultural",
+    "location": "Seminar Hall A",
+    "description": "Practice research, listening and public speaking."
+  },
+  {
+    "id": 15,
+    "title": "Internship Q&A",
+    "date": "2027-02-20",
+    "category": "Career",
+    "location": "Auditorium",
+    "description": "Ask questions about internship applications and preparation."
+  }
+]

@@ -1,0 +1,6 @@
+-- StudentHub normalized entities:
+-- users: login identity and role
+-- students: optional student-specific profile linked 1:1 to users
+-- events: managed campus events
+-- registrations: many-to-many user/event registration relation
+-- audit_logs: admin and authentication action history

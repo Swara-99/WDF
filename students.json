@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "name": "Aarav Patel",
+    "course": "B.Tech IT",
+    "year": 2,
+    "email": "student1@example.edu"
+  },
+  {
+    "id": 2,
+    "name": "Diya Shah",
+    "course": "B.Tech CSE",
+    "year": 2,
+    "email": "student2@example.edu"
+  },
+  {
+    "id": 3,
+    "name": "Rohan Mehta",
+    "course": "BCA",
+    "year": 1,
+    "email": "student3@example.edu"
+  },
+  {
+    "id": 4,
+    "name": "Anaya Desai",
+    "course": "B.Tech IT",
+    "year": 3,
+    "email": "student4@example.edu"
+  },
+  {
+    "id": 5,
+    "name": "Vivaan Joshi",
+    "course": "B.Sc IT",
+    "year": 2,
+    "email": "student5@example.edu"
+  },
+  {
+    "id": 6,
+    "name": "Isha Trivedi",
+    "course": "BCA",
+    "year": 3,
+    "email": "student6@example.edu"
+  },
+  {
+    "id": 7,
+    "name": "Arjun Parmar",
+    "course": "B.Tech CSE",
+    "year": 1,
+    "email": "student7@example.edu"
+  },
+  {
+    "id": 8,
+    "name": "Sara Khan",
+    "course": "B.Tech IT",
+    "year": 2,
+    "email": "student8@example.edu"
+  },
+  {
+    "id": 9,
+    "name": "Krish Patel",
+    "course": "B.Sc IT",
+    "year": 3,
+    "email": "student9@example.edu"
+  },
+  {
+    "id": 10,
+    "name": "Mira Shah",
+    "course": "BCA",
+    "year": 2,
+    "email": "student10@example.edu"
+  },
+  {
+    "id": 11,
+    "name": "Dev Thakkar",
+    "course": "B.Tech CSE",
+    "year": 3,
+    "email": "student11@example.edu"
+  },
+  {
+    "id": 12,
+    "name": "Aditi Mehta",
+    "course": "B.Tech IT",
+    "year": 1,
+    "email": "student12@example.edu"
+  },
+  {
+    "id": 13,
+    "name": "Kabir Desai",
+    "course": "BCA",
+    "year": 2,
+    "email": "student13@example.edu"
+  },
+  {
+    "id": 14,
+    "name": "Riya Joshi",
+    "course": "B.Sc IT",
+    "year": 1,
+    "email": "student14@example.edu"
+  },
+  {
+    "id": 15,
+    "name": "Yash Trivedi",
+    "course": "B.Tech CSE",
+    "year": 2,
+    "email": "student15@example.edu"
+  }
+]

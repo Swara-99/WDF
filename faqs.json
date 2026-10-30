@@ -1,0 +1,62 @@
+[
+  {
+    "question": "How do I create an account?",
+    "answer": "Open Register, complete each required field and submit the form. Your password is stored as a secure hash."
+  },
+  {
+    "question": "I cannot log in. What should I check?",
+    "answer": "Check that your email and password are correct. If the issue continues, ask the portal administrator for help."
+  },
+  {
+    "question": "Where can I find campus events?",
+    "answer": "Choose Events from the main navigation. You can search, filter, sort and move through pages."
+  },
+  {
+    "question": "Can I change my profile?",
+    "answer": "Sign in and open Profile to update your student details."
+  },
+  {
+    "question": "How do I contact the team?",
+    "answer": "Use the Contact page. Your message is validated and stored in a local JSON file for this practical."
+  },
+  {
+    "question": "Who can manage student records?",
+    "answer": "Only users with the admin role can open the admin management pages."
+  },
+  {
+    "question": "Why did my session expire?",
+    "answer": "For security, sessions expire after a period of inactivity. Please sign in again."
+  },
+  {
+    "question": "How are passwords protected?",
+    "answer": "Passwords are hashed with PHP password_hash() and checked with password_verify()."
+  },
+  {
+    "question": "Can I upload any event poster?",
+    "answer": "The event form accepts validated JPG, PNG or WEBP image files within the configured size limit."
+  },
+  {
+    "question": "Does the website work on mobile?",
+    "answer": "Yes. The layout uses responsive CSS Grid, Flexbox and media queries."
+  },
+  {
+    "question": "How do I search events?",
+    "answer": "Enter a keyword and optionally select a category on the Events page."
+  },
+  {
+    "question": "Can I use real student data?",
+    "answer": "Use fictional data for practice unless you have explicit permission to process real records."
+  },
+  {
+    "question": "Where are contact messages stored?",
+    "answer": "The practical stores messages in data/contact_messages.json. Keep this file private and outside public access for real deployments."
+  },
+  {
+    "question": "How do I access the admin dashboard?",
+    "answer": "An administrator must assign your account the admin role in the local database."
+  },
+  {
+    "question": "How do I run this project?",
+    "answer": "Copy the folder into XAMPP htdocs, start Apache and MySQL, import the SQL file, then open the local URL."
+  }
+]

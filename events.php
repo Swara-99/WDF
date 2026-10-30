@@ -1,75 +1,30 @@
 <?php
-require_once __DIR__ . '/../includes/bootstrap.php';
-require_admin();
-
-$pageTitle = 'Manage events | StudentHub';
-$notice = '';
-$uploadDir = __DIR__ . '/../uploads/';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    verify_csrf();
-    $action =$_POST['action'] ?? '';
-    $id = (int)($_POST['id'] ?? 0);
-
-    if ($pdo && $action === 'delete' &&$id) {
-        $s =$pdo->prepare('DELETE FROM events WHERE id = ?');
-        $s->execute([$id]);
-        audit($pdo, (int)$_SESSION['user_id'], 'event_delete', (string)$id);
-        $notice = 'Event deleted.';
-    }
-
-    if ($pdo && in_array($action, ['create', 'update'], true)) {$title = trim($_POST['title'] ?? '');$category = trim($_POST['category'] ?? 'General');$date = $_POST['event_date'] ?? '';$location = trim($_POST['location'] ?? '');$description = trim($_POST['description'] ?? '');$status = $_POST['status'] ?? 'open';$poster = null;
-        $uploadError = '';
-
-        if (mb_strlen($title) < 3 || !preg_match('/^\d{4}-\d{2}-\d{2}$/',$date) || $location === '' \vert{}\vert{} mb_strlen($description) < 5 || !in_array($status, ['open', 'closed'], true)) {$uploadError = 'Please complete all event fields correctly.';
-        }
-
-        if (isset($_FILES['poster']) && $_FILES['poster']['error'] !== UPLOAD_ERR_NO_FILE) {$f = $_FILES['poster'];$mime = (new finfo(FILEINFO_MIME_TYPE))->file($f['tmp_name']);$allowed = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
-
-            if ($f['error'] !== UPLOAD_ERR_OK || $f['size'] > 2 * 1024 * 1024 \vert{}\vert{} !isset($allowed[$mime])) {$uploadError = 'Poster must be JPG, PNG or WEBP and no larger than 2 MB.';
-            } else {
-                $poster = bin2hex(random_bytes(12)) . '.' . $allowed[$mime];
-                if (!move_uploaded_file($f['tmp_name'],$uploadDir . $poster)) {$poster = null;
-                    $uploadError = 'Could not save poster. Check uploads folder permissions.';
-                }
-            }
-        }
-
-        if (!$uploadError) {
-            if ($action === 'create') {$s = $pdo->prepare('INSERT INTO events (title, category, event_date, location, description, status, poster, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');$s->execute([$title,$category, $date,$location, $description,$status, $poster,$_SESSION['user_id']]);
-                audit($pdo, (int)$_SESSION['user_id'], 'event_create',$title);
-                $notice = 'Event created.';
-            } else {
-                $sql = 'UPDATE events SET title = ?, category = ?, event_date = ?, location = ?, description = ?, status = ?' . ($poster ? ', poster = ?' : '') . ' WHERE id = ?';
-                $args = [$title,$category, $date,$location, $description,$status];
-                if ($poster) {
-                    $args[] =$poster;
-                }
-                $args[] =$id;
-                $s = $pdo->prepare($sql);
-                $s->execute($args);
-                audit($pdo, (int)$_SESSION['user_id'], 'event_update',$title);
-                $notice = 'Event updated.';
-            }
-        } else {
-            $notice = $uploadError;
-        }
-    }
+require_once __DIR__.'/../includes/bootstrap.php';
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
+function json_response($data,int $status=200): never {http_response_code($status);echo json_encode($data,JSON_UNESCAPED_UNICODE);exit;}
+if(!$pdo)json_response(['error'=>'Database unavailable. Import the SQL schema first.'],503);
+$method=$_SERVER['REQUEST_METHOD'];
+if($method==='GET'){
+ $q=trim($_GET['q']??'');$stmt=$pdo->prepare('SELECT id,title,category,event_date AS date,location,description,status FROM events WHERE title LIKE ? OR category LIKE ? OR location LIKE ? ORDER BY event_date ASC LIMIT 100');
+ $term='%'.$q.'%';$stmt->execute([$term,$term,$term]);json_response(['data'=>$stmt->fetchAll()]);
 }
-
-$rows =$pdo ? $pdo->query('SELECT * FROM events ORDER BY event_date DESC LIMIT 100')->fetchAll() : [];$edit = null;
-
-if (isset($_GET['edit']) &&$pdo) {
-    $s =$pdo->prepare('SELECT * FROM events WHERE id = ?');
-    $s->execute([(int)$_GET['edit']]);
-    $edit =$s->fetch() ?: null;
-}
-
-include __DIR__ . '/../includes/header.php';
-?>
-
-<main id="main-content">
-    <section class="page-title">
-        <h1>Event management</h1>
-        <p>Create, edit, remove events and validate poster uploads.</p>
-    </section
+if(!is_logged_in())json_response(['error'=>'Sign in required.'],401);
+if(!in_array($method,['POST','PUT','DELETE'],true))json_response(['error'=>'Method not allowed.'],405);
+$token=$_SERVER['HTTP_X_CSRF_TOKEN']??'';if(!is_string($token)||!hash_equals(csrf_token(),$token))json_response(['error'=>'Invalid CSRF token.'],419);
+if(current_role()!=='admin')json_response(['error'=>'Admin access required.'],403);
+$body=json_decode(file_get_contents('php://input'),true);if(!is_array($body))$body=$_POST;
+try{
+ if($method==='POST'){
+  $title=trim($body['title']??'');$category=trim($body['category']??'General');$date=$body['date']??'';$location=trim($body['location']??'');$description=trim($body['description']??'');
+  if(mb_strlen($title)<3||!preg_match('/^\d{4}-\d{2}-\d{2}$/',$date)||$location===''||mb_strlen($description)<5)json_response(['error'=>'Provide a valid title, date, location and description.'],422);
+  $s=$pdo->prepare("INSERT INTO events(title,category,event_date,location,description,created_by) VALUES(?,?,?,?,?,?)");$s->execute([$title,$category,$date,$location,$description,$_SESSION['user_id']]);audit($pdo,(int)$_SESSION['user_id'],'event_create',$title);json_response(['message'=>'Event created.','id'=>(int)$pdo->lastInsertId()],201);
+ }
+ $id=(int)($body['id']??$_GET['id']??0);if($id<1)json_response(['error'=>'Valid event id required.'],422);
+ if($method==='PUT'){
+  $title=trim($body['title']??'');$category=trim($body['category']??'General');$date=$body['date']??'';$location=trim($body['location']??'');$description=trim($body['description']??'');
+  if(mb_strlen($title)<3||!preg_match('/^\d{4}-\d{2}-\d{2}$/',$date)||$location===''||mb_strlen($description)<5)json_response(['error'=>'Provide valid event details.'],422);
+  $s=$pdo->prepare('UPDATE events SET title=?,category=?,event_date=?,location=?,description=? WHERE id=?');$s->execute([$title,$category,$date,$location,$description,$id]);audit($pdo,(int)$_SESSION['user_id'],'event_update',(string)$id);json_response(['message'=>'Event updated.']);
+ }
+ $s=$pdo->prepare('DELETE FROM events WHERE id=?');$s->execute([$id]);audit($pdo,(int)$_SESSION['user_id'],'event_delete',(string)$id);json_response(['message'=>'Event deleted.']);
+}catch(Throwable $ex){json_response(['error'=>'The event operation could not be completed.'],500);}
