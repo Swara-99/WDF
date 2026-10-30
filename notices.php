@@ -1,0 +1,7 @@
+<?php require_once __DIR__.'/includes/bootstrap.php'; $pageTitle='Notices | StudentHub'; include __DIR__.'/includes/header.php'; ?>
+<main id="main-content"><section class="page-title"><h1>Campus notices</h1><p>Updates and reminders for the student community.</p></section><section class="notice-container">
+<article class="notice-card"><div class="notice-icon" aria-hidden="true">!</div><div class="notice-content"><span>Academic update · 22 Oct 2026</span><h2>Welcome to StudentHub</h2><p>Use the portal to explore events, maintain your profile and learn about student services.</p></div></article>
+<article class="notice-card"><div class="notice-icon" aria-hidden="true">📌</div><div class="notice-content"><span>Reminder · 20 Oct 2026</span><h2>Keep your profile up to date</h2><p>Review your contact details after signing in so the information displayed in your account is current.</p></div></article>
+<article class="notice-card"><div class="notice-icon" aria-hidden="true">🔐</div><div class="notice-content"><span>Security · 18 Oct 2026</span><h2>Account safety</h2><p>Use a unique password, log out on shared computers and never share your login credentials.</p></div></article>
+<article class="notice-card"><div class="notice-icon" aria-hidden="true">📅</div><div class="notice-content"><span>Events · 15 Oct 2026</span><h2>Explore campus activities</h2><p>Visit the Events page to search and filter workshops, career sessions and cultural activities.</p></div></article>
+</section></main><?php include __DIR__.'/includes/footer.php'; ?>

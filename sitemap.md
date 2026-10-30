@@ -1,0 +1,20 @@
+# StudentHub Sitemap
+- Home (`index.php`)
+- About (`about.php`)
+- Account
+  - Register (`register.php`)
+  - Login (`login.php`)
+  - Logout (`logout.php`)
+  - Dashboard (`dashboard.php`)
+  - Profile (`profile.php`)
+- Campus information
+  - Events (`events.php`)
+  - Notices (`notices.php`)
+  - FAQ (`faq.php`)
+  - Contact (`contact.php`)
+- Admin (admin role only)
+  - Dashboard (`admin/index.php`)
+  - Student management (`admin/students.php`)
+  - Event management (`admin/events.php`)
+  - AJAX event manager (`admin/api-events.php`)
+- JSON API (`api/events.php`)
