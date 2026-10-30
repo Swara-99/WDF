@@ -1,0 +1,4 @@
+/data/*.csv
+/data/contact_messages.json
+/uploads/*
+!/uploads/.gitkeep
